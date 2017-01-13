@@ -19,15 +19,12 @@ class m170113_150101_create_schedule_time_slot_table extends \yii\db\Migration
               'start_at' => $this->datetime()->notNull(),
               'end_at' => $this->datetime()->notNull(),
               ], $tableOptions);
-                } else {
-          echo "\nTable `".Yii::$app->db->tablePrefix."schedule_time_slot` already exists!\n";
-        }
         
             // Schedule ID
             $this->createIndex(
                 'idx-schedule_time_slot-schedule_id',
                 '{{%schedule_time_slot}}',
-                'schedule_time_slot'
+                'schedule_id'
             );
 
             $this->addForeignKey(
@@ -39,6 +36,9 @@ class m170113_150101_create_schedule_time_slot_table extends \yii\db\Migration
                 'CASCADE',
                 'CASCADE'
             );
+        } else {
+          echo "\nTable `".Yii::$app->db->tablePrefix."schedule_time_slot` already exists!\n";
+        }
                  
     }
 

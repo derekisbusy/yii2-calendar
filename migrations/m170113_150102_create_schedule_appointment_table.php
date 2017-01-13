@@ -17,10 +17,10 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
               'id' => $this->primaryKey(),
               'label' => $this->string(30),
               'user_id' => $this->integer(11),
-              'type_id' => $this->smallInteger(1)->unsigned()->notNull(),
+              'type_id' => $this->integer(1)->unsigned(),
               'start_at' => $this->datetime()->notNull(),
               'end_at' => $this->datetime()->notNull(),
-              'status_id' => $this->integer(1)->unsigned()->notNull(),
+              'status_id' => $this->integer(1)->unsigned(),
               'assigned_to' => $this->integer(11),
               'created_by' => $this->integer(11),
               'updated_by' => $this->integer(11),
@@ -32,7 +32,7 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             $this->createIndex(
                 'idx-schedule_appointment-user_id',
                 '{{%schedule_appointment}}',
-                'schedule_appointment'
+                'user_id'
             );
 
             $this->addForeignKey(
@@ -47,16 +47,16 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             
             // Type ID
             $this->createIndex(
-                'idx-schedule_appointment-user_id',
+                'idx-schedule_appointment-type_id',
                 '{{%schedule_appointment}}',
-                'schedule_appointment'
+                'type_id'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-user_id',
+                'fk-schedule_appointment-type_id',
                 '{{%schedule_appointment}}',
-                'user_id',
-                '{{%user}}',
+                'type_id',
+                '{{%schedule_appointment_type}}',
                 'id',
                 'SET NULL',
                 'CASCADE'

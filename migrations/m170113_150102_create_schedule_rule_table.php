@@ -15,7 +15,7 @@ class m170113_150102_create_schedule_rule_table extends \yii\db\Migration
         if (!in_array(Yii::$app->db->tablePrefix.'schedule_rule', $tables))  {
           $this->createTable('{{%schedule_rule}}', [
               'id' => $this->primaryKey(),
-              'schedule_id' => $this->smallInteger(3)->notNull(),
+              'schedule_id' => $this->integer(3)->unsigned()->notNull(),
               'type' => $this->smallInteger(3)->notNull(),
               'day_of_week' => $this->string(0,0),
               'day_of_year' => $this->smallInteger(5),
