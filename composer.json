@@ -1,0 +1,21 @@
+{
+    "name": "derekisbusy/yii2-calendar",
+    "description": "Calendar modules for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Derek Gifford",
+            "email": "derekisbusy@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "derekisbusy\\calendar\\": ""
+        }
+    }
+}
