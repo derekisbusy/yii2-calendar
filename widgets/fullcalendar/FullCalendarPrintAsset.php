@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class FullCalendarPrintAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/fullcalendar/dist';
+    public $sourcePath = '@npm/fullcalendar/dist';
     public $cssOptions = ['media'=>'print'];
     public $css = [
         'fullcalendar.print.css',
