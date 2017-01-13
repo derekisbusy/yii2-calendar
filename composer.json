@@ -12,7 +12,8 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/moment": "*"
+        "bower-asset/moment": "*",
+        "npm-asset/fullcalendar": "3.*"
     },
     "autoload": {
         "psr-4": {
