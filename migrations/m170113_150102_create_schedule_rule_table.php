@@ -2,7 +2,7 @@
 
 use yii\db\Schema;
 
-class m170113_150101_create_schedule_rule_table extends \yii\db\Migration
+class m170113_150102_create_schedule_rule_table extends \yii\db\Migration
 {
     public function up()
     {

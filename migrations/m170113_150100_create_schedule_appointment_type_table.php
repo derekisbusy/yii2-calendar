@@ -2,7 +2,7 @@
 
 use yii\db\Schema;
 
-class m170113_150101_create_schedule_appointment_type_table extends \yii\db\Migration
+class m170113_150100_create_schedule_appointment_type_table extends \yii\db\Migration
 {
     public function up()
     {
