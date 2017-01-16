@@ -2,13 +2,13 @@
 
 namespace derekisbusy\calendar\backend\modules\calendar\controllers;
 
-use derekisbusy\calendar\models\ScheduleAppointment;
+use derekisbusy\calendar\models\Appointment;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
 /**
- * AppointmentController implements the CRUD actions for ScheduleAppointment model.
+ * AppointmentController implements the CRUD actions for Appointment model.
  */
 class AppointmentController extends \yii\web\Controller
 {
@@ -28,12 +28,12 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Lists all ScheduleAppointment models.
+     * Lists all Appointment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new \derekisbusy\calendar\models\ScheduleAppointmentSearch;
+        $searchModel = new \derekisbusy\calendar\models\AppointmentSearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -42,7 +42,7 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Displays a single ScheduleAppointment model.
+     * Displays a single Appointment model.
      * @param integer $id
      * @return mixed
      */
@@ -58,13 +58,13 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Creates a new ScheduleAppointment model.
+     * Creates a new Appointment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $appointment = new \derekisbusy\calendar\models\ScheduleAppointmentForm(['scenario'=>  ScheduleAppointment::SCENARIO_CREATE]);
+        $appointment = new \derekisbusy\calendar\models\AppointmentForm(['scenario'=>  Appointment::SCENARIO_CREATE]);
 
         if ($appointment->load(Yii::$app->request->post()) && $appointment->save()) {
             return $this->redirect(['view', 'id' => $appointment->id]);
@@ -76,7 +76,7 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Updates an existing ScheduleAppointment model.
+     * Updates an existing Appointment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,7 +84,7 @@ class AppointmentController extends \yii\web\Controller
     public function actionUpdate($id,$ajax=false)
     {
         $appointment = $this->findModel($id);
-        $appointment->scenario = ScheduleAppointment::SCENARIO_UPDATE;
+        $appointment->scenario = Appointment::SCENARIO_UPDATE;
         
         if ($appointment->load(Yii::$app->request->post()) && $appointment->save()) {
             if ($ajax) {
@@ -116,7 +116,7 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Deletes an existing ScheduleAppointment model.
+     * Deletes an existing Appointment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -129,15 +129,15 @@ class AppointmentController extends \yii\web\Controller
     }
 
     /**
-     * Finds the ScheduleAppointment model based on its primary key value.
+     * Finds the Appointment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ScheduleAppointment the loaded model
+     * @return Appointment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($appointment = \derekisbusy\calendar\models\ScheduleAppointmentForm::findOne($id)) !== null) {
+        if (($appointment = \derekisbusy\calendar\models\AppointmentForm::findOne($id)) !== null) {
             return $appointment;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

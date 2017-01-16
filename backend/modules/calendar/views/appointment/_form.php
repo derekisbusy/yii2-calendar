@@ -1,7 +1,7 @@
 <?php
 /**
  * @var yii\web\View $this
- * @var common\models\ScheduleAppointmentForm $appointment
+ * @var derekisbusy\calendar\models\AppointmentForm $appointment
  * @var yii\widgets\ActiveForm $form
  */
 use yii\helpers\Html;
@@ -24,11 +24,11 @@ echo Form::widget([
 'attributes' => [
     'patient_id'=>['type'=> Form::INPUT_WIDGET, 
         'widgetClass'=>Select2::classname(),
-        'hint'=>Yii::t('common/models/schedule-appointment', 'Type and select an patient\'s user account'),
+        'hint'=>Yii::t('calendar', 'Type and select an patient\'s user account'),
         'options'=>[
             'initValueText'=>$appointment->patient ? $appointment->patient->getLastNameFirst() : null,
             'pluginOptions' => [
-                'placeholder'=>\Yii::t('common/models/schedule-appointment','Select patient').'...',
+                'placeholder'=>\Yii::t('calendar','Select patient').'...',
                 'allowClear' => true,
                 'minimumInputLength' => 1,
                 'ajax' => [
@@ -44,12 +44,12 @@ echo Form::widget([
     ],
     'assigned_to'=>['type'=> Form::INPUT_WIDGET,
         'widgetClass'=>Select2::classname(),
-        'hint'=>Yii::t('common/models/schedule-appointment', 'Type and select an employee\'s user account'),
+        'hint'=>Yii::t('calendar', 'Type and select an employee\'s user account'),
         'options'=>[
             'initValueText'=>$appointment->assignedTo ? $appointment->assignedTo->username : null,
             'pluginOptions' => [
                 'allowClear' => true,
-                'placeholder' => \Yii::t('common/models/schedule-appointment','Search for user').'...',
+                'placeholder' => \Yii::t('calendar','Search for user').'...',
                 'minimumInputLength' => 1,
                 'ajax' => [
                     'url' => \yii\helpers\Url::to(['//ajax/admin-user']),
@@ -68,9 +68,9 @@ echo Form::widget([
         'options'=>[
             'hideSearch'=>true,
             'options'=>[
-                'prompt'=>\Yii::t('common/models/schedule-appointment','Select appointment type').'...'
+                'prompt'=>\Yii::t('calendar','Select appointment type').'...'
                 ],
-            'data'=>  \common\models\ScheduleAppointmentType::getTypes(),
+            'data'=>  \derekisbusy\calendar\models\AppointmentType::getTypes(),
         ],
     ],
     'status_id'=>['type'=> Form::INPUT_WIDGET,
@@ -80,7 +80,7 @@ echo Form::widget([
             'hideSearch'=>true,
             'options'=>[
             'prompt'=>'Select status',],
-            'data'=>  \common\models\ScheduleAppointmentStatus::getStatuses(),
+            'data'=>  \derekisbusy\calendar\models\AppointmentStatus::getStatuses(),
         ],
     ],
     'date'=>['type'=> Form::INPUT_WIDGET,
@@ -107,7 +107,7 @@ echo Form::widget([
         'attributes'=>[
             'start_time'=>['type'=> Form::INPUT_WIDGET,
                 'widgetClass'=>DateControl::classname(),
-                'label'=>\Yii::t('common/models/schedule-appointment','Start Time'),
+                'label'=>\Yii::t('calendar','Start Time'),
                 'options'=>['type'=>DateControl::FORMAT_TIME,
                     'options'=>[
                         'pluginOptions'=>[
@@ -119,7 +119,7 @@ echo Form::widget([
             ],
             'end_time'=>['type'=> Form::INPUT_WIDGET,
                 'widgetClass'=>DateControl::classname(),
-                'label'=>\Yii::t('backend/schedule/appointment','End Time'),
+                'label'=>\Yii::t('calendar','End Time'),
                 'options'=>[
                     'type'=>DateControl::FORMAT_TIME,
                     'options'=>[

@@ -22,9 +22,9 @@ class DefaultController extends \yii\web\Controller
 //    public function actionAppointment($ajax=false,$id=null)
 //    {
 //        if($id)
-//            $appointment = \common\models\ScheduleAppointmentForm::find()->where(['id'=>$id])->one();
+//            $appointment = \common\models\AppointmentForm::find()->where(['id'=>$id])->one();
 //        else
-//            $appointment = new \common\models\ScheduleAppointmentForm;
+//            $appointment = new \common\models\AppointmentForm;
 //        if($ajax)
 //            return $this->renderAjax('_form',['appointment'=>$appointment]);
 //        else
@@ -41,7 +41,7 @@ class DefaultController extends \yii\web\Controller
     public function actionCalendarEvents($start,$end)
     {
         $result=[];
-        foreach(\derekisbusy\calendar\models\ScheduleAppointment::find()->between($start,$end)->each() as $appointment) {
+        foreach(\derekisbusy\calendar\models\Appointment::find()->between($start,$end)->each() as $appointment) {
             $patient=$appointment->patient;
             $result[]=['id'=>$appointment->id,'title'=>"{$patient->first_name} {$patient->last_name}",'allDay'=>false,
                     'start'=>date('c',strtotime($appointment->start_at)),'end'=>date('c',strtotime($appointment->end_at))];

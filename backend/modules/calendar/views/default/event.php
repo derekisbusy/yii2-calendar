@@ -1,7 +1,7 @@
 <?php
 /**
  * @var yii\web\View $this
- * @var common\models\ScheduleAppointment $appointment
+ * @var derekisbusy\calendar\models\Appointment $appointment
  * @var yii\widgets\ActiveForm $form
  */
 use kartik\widgets\ActiveForm;
@@ -20,7 +20,7 @@ echo Form::widget([
 'attributes' => [
     'assigned_to'=>['type'=> Form::INPUT_WIDGET, 
             'widgetClass'=>Select2::classname(),
-            'hint'=>Yii::t('backend/schedule/appointment', 'Type and select an employee\'s user account'),
+            'hint'=>Yii::t('calendar', 'Type and select an employee\'s user account'),
             'options'=>[
 //                    'value'=>\Yii::$app->user->isGuest ? null : \Yii::$app->user->identity->getId(),
 //                    'initValueText'=>\Yii::$app->user->identity->username,
@@ -48,7 +48,7 @@ echo Form::widget([
         'options'=>[
             'options'=>[
             'prompt'=>'Select status',],
-            'data'=>  \common\models\ScheduleAppointmentStatus::getStatuses(),
+            'data'=>  \derekisbusy\calendar\models\AppointmentStatus::getStatuses(),
         ],
     ],
     'start_date'=>['type'=> Form::INPUT_WIDGET,

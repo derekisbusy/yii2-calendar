@@ -8,14 +8,14 @@ use kartik\detail\DetailView;
 use kartik\datecontrol\DateControl;
 /**
  * @var yii\web\View $this
- * @var common\models\ScheduleAppointment $appointment
+ * @var derekisbusy\calendar\models\Appointment $appointment
  */
 $displayDate = date('m/d/Y H:i A',strtotime($appointment->start_at));
-$this->title = Yii::t('backend/appointment','{firstNameLast} at {datetime}',['firstNameLast'=>$appointment->patient->getLastNameFirst(true),'datetime'=>$displayDate]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend/schedule/appointment', 'Schedule Appointments'), 'url' => ['index']];
+$this->title = Yii::t('calendar','{firstNameLast} at {datetime}',['firstNameLast'=>$appointment->patient->getLastNameFirst(true),'datetime'=>$displayDate]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('calendar', 'Appointments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="schedule-appointment-view">
+<div class="appointment-view">
 
 
     <?= DetailView::widget([
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class'=>Select2::classname(),
                     'initValueText'=>$appointment->patient->getLastNameFirst(),
                     'pluginOptions' => [
-                        'placeholder'=>\Yii::t('common/models/schedule-appointment','Select patient').'...',
+                        'placeholder'=>\Yii::t('calendar','Select patient').'...',
                         'allowClear' => true,
                         'minimumInputLength' => 1,
                         'ajax' => [
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'initValueText'=>$appointment->assignedTo->username,
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'placeholder' => \Yii::t('common/models/schedule-appointment','Search for user').'...',
+                        'placeholder' => \Yii::t('calendar','Search for user').'...',
                         'minimumInputLength' => 1,
                         'ajax' => [
                             'url' => \yii\helpers\Url::to(['//ajax/admin-user']),

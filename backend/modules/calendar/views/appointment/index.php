@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
  * @var yii\data\ActiveDataProvider $dataProvider
  */
 
-$this->title = Yii::t('backend/appointment', 'Appointments');
+$this->title = Yii::t('calendar', 'Appointments');
 $this->params['breadcrumbs'][] = $this->title;
 
 $columns = [
@@ -29,13 +29,13 @@ $columns = [
     [
         'attribute' => 'appointment_type',
         'filter' => Html::activeDropDownList($searchModel, 'appointment_type', 
-                yii\helpers\ArrayHelper::map(\common\models\ScheduleAppointmentType::find()->asArray()->all(), 'id', 'name'),['class'=>'form-control','prompt'=>'']),
+                yii\helpers\ArrayHelper::map(\derekisbusy\calendar\models\AppointmentType::find()->asArray()->all(), 'id', 'name'),['class'=>'form-control','prompt'=>'']),
         
     ],
     [
         'attribute' => 'appointment_status',
         'filter' => Html::activeDropDownList($searchModel, 'appointment_status', 
-                yii\helpers\ArrayHelper::map(\common\models\ScheduleAppointmentStatus::find()->asArray()->all(), 'id', 'name'),['class'=>'form-control','prompt'=>'']),
+                yii\helpers\ArrayHelper::map(\derekisbusy\calendar\models\AppointmentStatus::find()->asArray()->all(), 'id', 'name'),['class'=>'form-control','prompt'=>'']),
         
     ],
     ['attribute'=>'start_at','format'=>['datetime',(isset(Yii::$app->modules['datecontrol']['displaySettings']['datetime'])) ? Yii::$app->modules['datecontrol']['displaySettings']['datetime'] : 'd-m-Y H:i:s A']],
