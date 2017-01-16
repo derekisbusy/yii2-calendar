@@ -5,7 +5,7 @@ namespace derekisbusy\calendar\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%schedule_appointment_rule}}".
+ * This is the model class for table "{{%calendar_schedule_rule}}".
  *
  * @property integer $id
  * @property integer $schedule_id
@@ -31,12 +31,16 @@ class ScheduleRule extends \yii\db\ActiveRecord
     const TYPE_WEEKLY = 2;
     const TYPE_MONTHLY = 3;
     const TYPE_HOLIDAY = 4;
+    
+    const UNAVAILABLE = 0;
+    const AVAILABLE = 1;
+    
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%schedule_rule}}';
+        return '{{%calendar_schedule_rule}}';
     }
 
     /**

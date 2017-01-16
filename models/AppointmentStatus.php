@@ -5,22 +5,22 @@ namespace derekisbusy\calendar\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%appointment_type}}".
+ * This is the model class for table "{{%calendar_appointment_status}}".
  *
  * @property integer $id
  * @property string $abbr
  * @property string $name
  *
- * @property ScheduleAppointment[] $appointments
+ * @property Appointment[] $appointments
  */
-class ScheduleAppointmentType extends \yii\db\ActiveRecord
+class AppointmentStatus extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%schedule_appointment_type}}';
+        return '{{%calendar_appointment_status}}';
     }
 
     /**
@@ -32,8 +32,6 @@ class ScheduleAppointmentType extends \yii\db\ActiveRecord
             [['abbr', 'name'], 'required'],
             [['abbr'], 'string', 'max' => 12],
             [['name'], 'string', 'max' => 100],
-            [['description'],'safe'],
-            [['timespan'],'integer', 'min' => 60 * 5] // 5 min
         ];
     }
 
@@ -46,8 +44,6 @@ class ScheduleAppointmentType extends \yii\db\ActiveRecord
             'id' => Yii::t('common', 'ID'),
             'abbr' => Yii::t('common', 'Abbr'),
             'name' => Yii::t('common', 'Name'),
-            'description' => Yii::t('common', 'Description'),
-            'timespan' => Yii::t('calendar', 'Timespan'),
         ];
     }
 
@@ -56,10 +52,10 @@ class ScheduleAppointmentType extends \yii\db\ActiveRecord
      */
     public function getAppointments()
     {
-        return $this->hasMany(ScheduleAppointment::className(), ['type_id' => 'id']);
+        return $this->hasMany(Appointment::className(), ['status_id' => 'id']);
     }
     
-    public static function getTypes()
+    public static function getStatuses()
     {
         return \yii\helpers\ArrayHelper::map(self::find()->asArray()->all(), 'id', 'name');
     }

@@ -2,8 +2,8 @@
 
 namespace derekisbusy\calendar\models;
 
-use common\models\ScheduleAppointmentStatus;
-use common\models\ScheduleAppointmentType;
+use derekisbusy\calendar\models\AppointmentStatus;
+use derekisbusy\calendar\models\AppointmentType;
 use derekisbusy\calendar\backend\modules\calendar\Module;
 use Yii;
 
@@ -25,11 +25,11 @@ use Yii;
  * @property Patient $patient
  * @property User $createdBy
  * @property User $updatedBy
- * @property ScheduleAppointmentType $type
+ * @property AppointmentType $type
  * @property AppointmentStatus $status
  * @property User $assignedTo
  */
-class ScheduleAppointmentSearch extends ScheduleAppointment
+class AppointmentSearch extends Appointment
 {
     
     public $appointment_type;
@@ -68,7 +68,7 @@ class ScheduleAppointmentSearch extends ScheduleAppointment
     public function select()
     {
         
-        $select=[ScheduleAppointment::tableName().'.*'];
+        $select=[Appointment::tableName().'.*'];
         $select[] = new \yii\db\Expression("`user_assigned`.`username` AS `assigned_to_username`");
         $select[] = new \yii\db\Expression("`type`.`name` AS `appointment_type`");
         $select[] = new \yii\db\Expression("`t_status`.`name` AS `appointment_status`");
@@ -81,11 +81,11 @@ class ScheduleAppointmentSearch extends ScheduleAppointment
     public function query($query)
     {
         return $query->innerJoin(Module::getUserTableName().' user', '`user`.`'.Module::getUserModelIdName().'` = `user_id`')
-            ->innerJoin(Module::getUserTableName().' user_created', '`user_created`.`id` = '.ScheduleAppointment::tableName().'.`created_by`')
-            ->innerJoin(Module::getUserTableName().' user_updated', '`user_updated`.`id` = '.ScheduleAppointment::tableName().'.`updated_by`')
-            ->innerJoin(ScheduleAppointmentType::tableName().' type', '`type`.`id` = `type_id`')
-            ->innerJoin(ScheduleAppointmentStatus::tableName().' t_status', '`t_status`.`id` = '.ScheduleAppointment::tableName().'.`status_id`')
-            ->leftJoin(Module::getUserTableName().' user_assigned', '`user_assigned`.`id` = '.ScheduleAppointment::tableName().'.`assigned_to`');
+            ->innerJoin(Module::getUserTableName().' user_created', '`user_created`.`id` = '.Appointment::tableName().'.`created_by`')
+            ->innerJoin(Module::getUserTableName().' user_updated', '`user_updated`.`id` = '.Appointment::tableName().'.`updated_by`')
+            ->innerJoin(AppointmentType::tableName().' type', '`type`.`id` = `type_id`')
+            ->innerJoin(AppointmentStatus::tableName().' t_status', '`t_status`.`id` = '.Appointment::tableName().'.`status_id`')
+            ->leftJoin(Module::getUserTableName().' user_assigned', '`user_assigned`.`id` = '.Appointment::tableName().'.`assigned_to`');
     }
     
     public function sort()

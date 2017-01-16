@@ -2,19 +2,20 @@
 
 namespace derekisbusy\calendar\models\base;
 
+use derekisbusy\calendar\models\Schedule;
 use Yii;
 
 /**
- * This is the base model class for table "{{%schedule_time_slot}}".
+ * This is the base model class for table "{{%calendar_schedule_time_slot}}".
  *
  * @property string $id
  * @property string $schedule_id
  * @property string $start_at
  * @property string $end_at
  *
- * @property \derekisbusy\calendar\models\Schedule $schedule
+ * @property Schedule $schedule
  */
-class ScheduleTimeSlot extends \yii\db\ActiveRecord
+class TimeSlot extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
 
@@ -35,7 +36,7 @@ class ScheduleTimeSlot extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%schedule_time_slot}}';
+        return '{{%calendar_schedule_time_slot}}';
     }
 
     /**
@@ -56,15 +57,15 @@ class ScheduleTimeSlot extends \yii\db\ActiveRecord
      */
     public function getSchedule()
     {
-        return $this->hasOne(\derekisbusy\calendar\models\Schedule::className(), ['id' => 'schedule_id']);
+        return $this->hasOne(Schedule::className(), ['id' => 'schedule_id']);
     }
     
     /**
      * @inheritdoc
-     * @return \derekisbusy\calendar\models\ScheduleTimeSlotQuery the active query used by this AR class.
+     * @return \derekisbusy\calendar\models\TimeSlotQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \derekisbusy\calendar\models\ScheduleTimeSlotQuery(get_called_class());
+        return new \derekisbusy\calendar\models\TimeSlotQuery(get_called_class());
     }
 }

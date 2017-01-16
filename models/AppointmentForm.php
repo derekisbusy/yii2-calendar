@@ -3,8 +3,8 @@
 namespace derekisbusy\calendar\models;
 
 use derekisbusy\calendar\backend\modules\calendar\Module;
-use derekisbusy\calendar\models\ScheduleAppointmentStatus;
-use derekisbusy\calendar\models\ScheduleAppointmentType;
+use derekisbusy\calendar\models\AppointmentStatus;
+use derekisbusy\calendar\models\AppointmentType;
 use Yii;
 
 /**
@@ -25,11 +25,11 @@ use Yii;
  * @property User $user
  * @property User $createdBy
  * @property User $updatedBy
- * @property ScheduleAppointmentType $type
+ * @property AppointmentType $type
  * @property AppointmentStatus $status
  * @property User $assignedTo
  */
-class ScheduleAppointmentForm extends ScheduleAppointment
+class AppointmentForm extends Appointment
 {
     public $date;
     public $start_time;
@@ -49,8 +49,8 @@ class ScheduleAppointmentForm extends ScheduleAppointment
             [['date'], 'match', 'pattern'=>'/[0-9]{4}-[0-9]{2}-[0-9]{2}/'],
 //            [['start_time', 'end_time'], 'match', 'pattern'=>'/[0-9]{2}:[0-9]{2}:[0-9]{2}/i'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Module::getUserClassname(), 'targetAttribute' => Module::getUserModelIdName()],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => ScheduleAppointmentType::className(), 'targetAttribute' => 'id'],
-            [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ScheduleAppointmentStatus::className(), 'targetAttribute' => 'id'],
+            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AppointmentType::className(), 'targetAttribute' => 'id'],
+            [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => AppointmentStatus::className(), 'targetAttribute' => 'id'],
             [['assigned_to'], 'exist', 'skipOnError' => true, 'targetClass' => Module::getUserClassname(), 'targetAttribute' => Module::getUserModelIdName()],
         ];
     }

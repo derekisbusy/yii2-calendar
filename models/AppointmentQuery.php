@@ -2,7 +2,7 @@
 
 namespace derekisbusy\calendar\models;
 
-class ScheduleAppointmentQuery extends \yii\db\ActiveQuery
+class AppointmentQuery extends \yii\db\ActiveQuery
 {
     public function between($start,$end)
     {
