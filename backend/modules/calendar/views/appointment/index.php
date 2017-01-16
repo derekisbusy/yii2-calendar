@@ -17,11 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $columns = [
 //    ['class' => 'yii\grid\SerialColumn'],
-    'id',
-    [
-        'attribute'=>'patient_name',
-        'filter'=>Html::activeTextInput($searchModel, 'patient_name',['class'=>'form-control','prompt'=>''])
-    ],
+//    'id',
+//    [
+//        'attribute'=>'patient_name',
+//        'filter'=>Html::activeTextInput($searchModel, 'patient_name',['class'=>'form-control','prompt'=>''])
+//    ],
     [
         'attribute'=>'assigned_to_username',
         'filter'=>Html::activeTextInput($searchModel, 'assigned_to_username',['class'=>'form-control','prompt'=>''])

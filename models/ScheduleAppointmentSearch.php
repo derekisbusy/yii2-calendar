@@ -74,7 +74,7 @@ class ScheduleAppointmentSearch extends ScheduleAppointment
         $select[] = new \yii\db\Expression("`t_status`.`name` AS `appointment_status`");
         $select[] = new \yii\db\Expression("`user_created`.`username` AS `created_by_username`");
         $select[] = new \yii\db\Expression("`user_updated`.`username` AS `updated_by_username`");
-        $select[] = new \yii\db\Expression("CONCAT(`patient`.`first_name`,', ',`patient`.`last_name`,' ',SUBSTRING(`patient`.`middle_name`,0,1)) AS `patient_name`");
+//        $select[] = new \yii\db\Expression("CONCAT(`patient`.`first_name`,', ',`patient`.`last_name`,' ',SUBSTRING(`patient`.`middle_name`,0,1)) AS `patient_name`");
         return $select;
     }
     

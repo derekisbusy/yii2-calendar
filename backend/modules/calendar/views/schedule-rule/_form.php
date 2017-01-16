@@ -32,7 +32,7 @@ echo Form::widget([
                     'allowClear' => true,
                     'minimumInputLength' => 1,
                     'ajax' => [
-                        'url' => \yii\helpers\Url::to(['//backend/ajax/user-schedule']),
+                        'url' => \yii\helpers\Url::to(['/calendar/ajax/user-schedule']),
                         'dataType' => 'json',
                         'data' => new JsExpression('function(params) { return {q:params.term}; }'),
                     ],

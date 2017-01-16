@@ -94,4 +94,32 @@ class ScheduleRule extends \yii\db\ActiveRecord
             self::TYPE_HOLIDAY=>Yii::t('calendar','Holiday'),
         ];
     }
+    
+    
+    public function isDayOfWeek($date)
+    {
+        switch ($date->format("N")) {
+            case '0': if ($this->sunday) { return true; } break;
+            case '1': if ($this->monday) { return true; } break;
+            case '2': if ($this->tuesday) { return true; } break;
+            case '3': if ($this->wednesday) { return true; } break;
+            case '4': if ($this->thursday) { return true; } break;
+            case '5': if ($this->friday) { return true; } break;
+            case '6': if ($this->saturday) { return true; } break;
+        }
+        return false;
+    }
+    
+    
+    public function getStartHour()
+    {
+        return date("G",strtotime("Today ".$this->start_at));
+    }
+    
+    public function getStartMinute()
+    {
+        return date("i",strtotime("Today ".$this->start_at));
+    }
+    
+    
 }

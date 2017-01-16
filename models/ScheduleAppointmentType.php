@@ -32,6 +32,8 @@ class ScheduleAppointmentType extends \yii\db\ActiveRecord
             [['abbr', 'name'], 'required'],
             [['abbr'], 'string', 'max' => 12],
             [['name'], 'string', 'max' => 100],
+            [['description'],'safe'],
+            [['timespan'],'integer', 'min' => 60 * 5] // 5 min
         ];
     }
 
@@ -41,9 +43,11 @@ class ScheduleAppointmentType extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('common/models/appointment-type', 'ID'),
-            'abbr' => Yii::t('common/models/appointment-type', 'Abbr'),
-            'name' => Yii::t('common/models/appointment-type', 'Name'),
+            'id' => Yii::t('common', 'ID'),
+            'abbr' => Yii::t('common', 'Abbr'),
+            'name' => Yii::t('common', 'Name'),
+            'description' => Yii::t('common', 'Description'),
+            'timespan' => Yii::t('calendar', 'Timespan'),
         ];
     }
 

@@ -101,4 +101,9 @@ class Schedule extends \yii\db\ActiveRecord
             self::CONFIRM_EMAIL=>Yii::t('common','Email Confirmation'),
             self::CONFIRM_PHONE=>Yii::t('common','Phone Confirmation')];
     }
+    
+    public function getTypes()
+    {
+        return 
+    }
 }

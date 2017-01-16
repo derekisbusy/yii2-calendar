@@ -2,11 +2,12 @@
 
 namespace derekisbusy\calendar\backend\modules\calendar\controllers;
 
-use Yii;
+use derekisbusy\calendar\backend\modules\calendar\Module;
 use derekisbusy\calendar\models\ScheduleRule;
+use Yii;
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * ScheduleRuleController implements the CRUD actions for ScheduleRule model.
@@ -74,6 +75,14 @@ class ScheduleRuleController extends \yii\web\Controller
             return $this->render('create', [
                 'model' => $model,
             ]);
+        }
+    }
+    
+    public function addRule($rule)
+    {
+        switch ($rule->type) {
+            case 'weekly':
+                Module::weekly($rule);
         }
     }
 
