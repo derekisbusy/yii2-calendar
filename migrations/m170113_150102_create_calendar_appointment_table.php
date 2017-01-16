@@ -2,7 +2,7 @@
 
 use yii\db\Schema;
 
-class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
+class m170113_150102_create_calendar_appointment_table extends \yii\db\Migration
 {
     public function up()
     {
@@ -12,8 +12,8 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
         
-        if (!in_array(Yii::$app->db->tablePrefix.'schedule_appointment', $tables))  {
-          $this->createTable('{{%schedule_appointment}}', [
+        if (!in_array(Yii::$app->db->tablePrefix.'calendar_appointment', $tables))  {
+          $this->createTable('{{%calendar_appointment}}', [
               'id' => $this->primaryKey(),
               'label' => $this->string(30),
               'user_id' => $this->integer(11),
@@ -30,14 +30,14 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
           
             // User ID
             $this->createIndex(
-                'idx-schedule_appointment-user_id',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-user_id',
+                '{{%calendar_appointment}}',
                 'user_id'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-user_id',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-user_id',
+                '{{%calendar_appointment}}',
                 'user_id',
                 '{{%user}}',
                 'id',
@@ -47,16 +47,16 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             
             // Type ID
             $this->createIndex(
-                'idx-schedule_appointment-type_id',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-type_id',
+                '{{%calendar_appointment}}',
                 'type_id'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-type_id',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-type_id',
+                '{{%calendar_appointment}}',
                 'type_id',
-                '{{%schedule_appointment_type}}',
+                '{{%calendar_appointment}}',
                 'id',
                 'SET NULL',
                 'CASCADE'
@@ -64,16 +64,16 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             
             // Status ID
             $this->createIndex(
-                'idx-schedule_appointment-status_id',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-status_id',
+                '{{%calendar_appointment}}',
                 'status_id'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-status_id',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-status_id',
+                '{{%calendar_appointment}}',
                 'status_id',
-                '{{%schedule_appointment_status}}',
+                '{{%calendar_appointment_status}}',
                 'id',
                 'SET NULL',
                 'CASCADE'
@@ -81,14 +81,14 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             
             // Assigned To
             $this->createIndex(
-                'idx-schedule_appointment-assigned_to',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-assigned_to',
+                '{{%calendar_appointment}}',
                 'assigned_to'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-assigned_to',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-assigned_to',
+                '{{%calendar_appointment}}',
                 'assigned_to',
                 '{{%user}}',
                 'id',
@@ -98,14 +98,14 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             
             // Created By
             $this->createIndex(
-                'idx-schedule_appointment-created_by',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-created_by',
+                '{{%calendar_appointment}}',
                 'created_by'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-created_by',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-created_by',
+                '{{%calendar_appointment}}',
                 'created_by',
                 '{{%user}}',
                 'id',
@@ -115,14 +115,14 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
 
             // Updated By
             $this->createIndex(
-                'idx-schedule_appointment-updated_by',
-                '{{%schedule_appointment}}',
+                'idx-calendar_appointment-updated_by',
+                '{{%calendar_appointment}}',
                 'updated_by'
             );
 
             $this->addForeignKey(
-                'fk-schedule_appointment-updated_by',
-                '{{%schedule_appointment}}',
+                'fk-calendar_appointment-updated_by',
+                '{{%calendar_appointment}}',
                 'updated_by',
                 '{{%user}}',
                 'id',
@@ -131,7 +131,7 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
             );
           
         } else {
-          echo "\nTable `".Yii::$app->db->tablePrefix."schedule_appointment` already exists!\n";
+          echo "\nTable `".Yii::$app->db->tablePrefix."calendar_appointment` already exists!\n";
         }
                  
     }
@@ -139,7 +139,7 @@ class m170113_150102_create_schedule_appointment_table extends \yii\db\Migration
     public function down()
     {
         $this->execute('SET foreign_key_checks = 0');
-        $this->dropTable('{{%schedule_appointment}}');
+        $this->dropTable('{{%calendar_appointment}}');
         $this->execute('SET foreign_key_checks = 1');
     }
 }

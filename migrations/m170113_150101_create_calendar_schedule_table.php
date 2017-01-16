@@ -12,8 +12,8 @@ class m170113_150101_create_schedule_table extends \yii\db\Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
         
-        if (!in_array(Yii::$app->db->tablePrefix.'schedule', $tables))  {
-            $this->createTable('{{%schedule}}', [
+        if (!in_array(Yii::$app->db->tablePrefix.'calendar_schedule', $tables))  {
+            $this->createTable('{{%calendar_schedule}}', [
                 'id' => $this->primaryKey(3)->unsigned(),
                 'user_id' => $this->integer(11)->notNull(),
                 'status' => $this->smallInteger(1)->unsigned()->notNull(),
@@ -26,14 +26,14 @@ class m170113_150101_create_schedule_table extends \yii\db\Migration
             
             // User ID
             $this->createIndex(
-                'idx-schedule-user_id',
-                '{{%schedule}}',
+                'idx-calendar_schedule-user_id',
+                '{{%calendar_schedule}}',
                 'user_id'
             );
 
             $this->addForeignKey(
-                'fk-schedule-user_id',
-                '{{%schedule}}',
+                'fk-calendar_schedule-user_id',
+                '{{%calendar_schedule}}',
                 'user_id',
                 '{{%user}}',
                 'id',
@@ -42,14 +42,14 @@ class m170113_150101_create_schedule_table extends \yii\db\Migration
             );
             
         } else {
-            echo "\nTable `".Yii::$app->db->tablePrefix."schedule` already exists!\n";
+            echo "\nTable `".Yii::$app->db->tablePrefix."calendar_schedule` already exists!\n";
         }
     }
 
     public function down()
     {
         $this->execute('SET foreign_key_checks = 0');
-        $this->dropTable('{{%schedule}}');
+        $this->dropTable('{{%calendar_schedule}}');
         $this->execute('SET foreign_key_checks = 1');
     }
 }
