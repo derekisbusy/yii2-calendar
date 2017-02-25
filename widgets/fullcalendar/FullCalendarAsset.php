@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class FullCalendarAsset extends AssetBundle
 {
-    public $sourcePath = '@npm/fullcalendar/dist';
+    public $sourcePath = '@bower/fullcalendar/dist';
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
     public $css = [
         'fullcalendar.min.css',
